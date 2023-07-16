@@ -1,0 +1,68 @@
+basePath: /api
+definitions:
+  keyloak.CreateRealmRequest:
+    properties:
+      realm_name:
+        type: string
+      user_email:
+        type: string
+      user_first_name:
+        type: string
+      user_last_name:
+        type: string
+      user_name:
+        type: string
+    required:
+    - realm_name
+    - user_email
+    - user_name
+    type: object
+  keyloak.CreateRealmResponse:
+    properties:
+      realm_name:
+        type: string
+      user_email:
+        type: string
+      user_first_name:
+        type: string
+      user_last_name:
+        type: string
+      user_name:
+        type: string
+    required:
+    - realm_name
+    - user_email
+    - user_name
+    type: object
+host: localhost:3000
+info:
+  contact:
+    email: support@qumulus.io
+    name: API Support
+    url: https://qumulus.io
+  description: Qumulus - Strato API Server.
+  title: Strato API
+  version: "1.0"
+paths:
+  /keycloak/realms:
+    post:
+      consumes:
+      - '*/*'
+      description: Create a realm and new admin user in keycloak, designed for first
+        time realm init
+      parameters:
+      - description: CreateRealmRequest
+        in: body
+        name: request
+        required: true
+        schema:
+          $ref: '#/definitions/keyloak.CreateRealmRequest'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/keyloak.CreateRealmResponse'
+      summary: Create a realm in keycloak
+swagger: "2.0"
