@@ -1,0 +1,1 @@
+{\\n\\t//uncomment those that you want to assign\\n\\t//\\\"realm_name\\\": response.body.realm_name, //string\\n\\t//\\\"user_email\\\": response.body.user_email, //string\\n\\t//\\\"user_first_name\\\": response.body.user_first_name, //string\\n\\t//\\\"user_last_name\\\": response.body.user_last_name, //string\\n\\t//\\\"user_name\\\": response.body.user_name //string\\n}

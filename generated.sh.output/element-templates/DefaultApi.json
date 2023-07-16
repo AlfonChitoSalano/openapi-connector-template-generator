@@ -1,0 +1,212 @@
+{
+  "$schema": "https://unpkg.com/@camunda/zeebe-element-templates-json-schema/resources/schema.json",
+  "name": "Strato API - Default",
+  "id": "com.camunda.generated.DefaultApi",
+  "description": "Strato API - Default, Schema Version 1.0. Generated using the OpenAPI generator.",
+  "icon": {
+    "contents": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAACXBIWXMAAAsSAAALEgHS3X78AAACiElEQVQ4EaVTzU8TURCf2tJuS7tQtlRb6UKBIkQwkRRSEzkQgyEc6lkOKgcOph78Y+CgjXjDs2i44FXY9AMTlQRUELZapVlouy3d7kKtb0Zr0MSLTvL2zb75eL838xtTvV6H/xELBptMJojeXLCXyobnyog4YhzXYvmCFi6qVSfaeRdXdrfaU1areV5KykmX06rcvzumjY/1ggkR3Jh+bNf1mr8v1D5bLuvR3qDgFbvbBJYIrE1mCIoCrKxsHuzK+Rzvsi29+6DEbTZz9unijEYI8ObBgXOzlcrx9OAlXyDYKUCzwwrDQx1wVDGg089Dt+gR3mxmhcUnaWeoxwMbm/vzDFzmDEKMMNhquRqduT1KwXiGt0vre6iSeAUHNDE0d26NBtAXY9BACQyjFusKuL2Ry+IPb/Y9ZglwuVscdHaknUChqLF/O4jn3V5dP4mhgRJgwSYm+gV0Oi3XrvYB30yvhGa7BS70eGFHPoTJyQHhMK+F0ZesRVVznvXw5Ixv7/C10moEo6OZXbWvlFAF9FVZDOqEABUMRIkMd8GnLwVWg9/RkJF9sA4oDfYQAuzzjqzwvnaRUFxn/X2ZlmGLXAE7AL52B4xHgqAUqrC1nSNuoJkQtLkdqReszz/9aRvq90NOKdOS1nch8TpL555WDp49f3uAMXhACRjD5j4ykuCtf5PP7Fm1b0DIsl/VHGezzP1KwOiZQobFF9YyjSRYQETRENSlVzI8iK9mWlzckpSSCQHVALmN9Az1euDho9Xo8vKGd2rqooA8yBcrwHgCqYR0kMkWci08t/R+W4ljDCanWTg9TJGwGNaNk3vYZ7VUdeKsYJGFNkfSzjXNrSX20s4/h6kB81/271ghG17l+rPTAAAAAElFTkSuQmCC"
+  },
+  "version": 1,
+  "appliesTo": [
+    "bpmn:Task"
+  ],
+  "elementType": {
+    "value": "bpmn:ServiceTask"
+  },
+  "groups": [
+    {
+      "id": "authentication",
+      "label": "Authentication"
+    },
+    {
+      "id": "operation",
+      "label": "Operation"
+    },
+    {
+      "id": "responseMapping",
+      "label": "Response Mapping"
+    },
+    {
+      "id": "keycloakRealmsPost",
+      "label": "Parameters"
+    },
+    {
+      "id": "modificationWarning",
+      "label": "Generated (DO NOT MODIFY)"
+    }
+  ],
+  "properties": [
+    {
+      "type": "Hidden",
+      "value": "io.camunda:http-json:1",
+      "binding": {
+        "type": "zeebe:taskDefinition:type"
+      }
+    },
+    {
+      "type": "Hidden",
+      "value": "placeholder",
+      "binding": {
+        "type": "zeebe:input",
+        "name": "objects"
+      }
+    },
+    {
+      "label": "Operation",
+      "id": "operation",
+      "description": "Specify the operation to call.",
+      "type": "Dropdown",
+      "group": "operation",
+      "value": "keycloakRealmsPost",
+      "choices": [
+        {
+          "name": "Reset choice",
+          "value": "-"
+        },
+        {
+          "name": "keycloakRealmsPost - Create a realm in keycloak",
+          "value": "keycloakRealmsPost"
+        }
+      ],
+      "binding": {
+        "type": "zeebe:taskHeader",
+        "key": "operation"
+      }
+    },
+    {
+      "label": "request",
+      "description": "CreateRealmRequest",
+      "type": "String",
+      "feel": "required",
+      "group": "keycloakRealmsPost",
+      "value": "=<request>",
+      "binding": {
+        "type": "zeebe:input",
+        "name": "objects.keycloakRealmsPost_request"
+      },
+      "condition": {
+        "property": "operation",
+        "equals": "keycloakRealmsPost"
+      },
+      "constraints": {
+        "notEmpty": true
+      }
+    },
+    {
+      "label": "Result Variable",
+      "description": "Name of variable to store the response in",
+      "group": "responseMapping",
+      "value": "response_keycloakRealmsPost",
+      "type": "String",
+      "binding": {
+        "type": "zeebe:taskHeader",
+        "key": "resultVariable"
+      },
+      "condition": {
+        "property": "operation",
+        "equals": "keycloakRealmsPost"
+      }
+    },
+    {
+      "label": "Result Expression",
+      "description": "Expression to map the response into process variables",
+      "group": "responseMapping",
+      "type": "Text",
+      "feel": "required",
+      "value": "=<Keyloak.createrealmresponse-response>",
+      "binding": {
+        "type": "zeebe:taskHeader",
+        "key": "resultExpression"
+      },
+      "condition": {
+        "property": "operation",
+        "equals": "keycloakRealmsPost"
+      }
+    },
+    {
+      "label": "Method",
+      "group": "modificationWarning",
+      "type": "Dropdown",
+      "value": "post",
+      "condition": {
+        "property": "operation",
+        "equals": "keycloakRealmsPost"
+      },
+      "choices": [
+        {
+          "name": "GET",
+          "value": "get"
+        },
+        {
+          "name": "POST",
+          "value": "post"
+        },
+        {
+          "name": "PATCH",
+          "value": "patch"
+        },
+        {
+          "name": "PUT",
+          "value": "put"
+        },
+        {
+          "name": "DELETE",
+          "value": "delete"
+        }
+      ],
+      "binding": {
+        "type": "zeebe:input",
+        "name": "method"
+      }
+    },
+    {
+      "label": "URL",
+      "group": "modificationWarning",
+      "type": "String",
+      "feel": "optional",
+      "value": "=\"http://localhost:3000/api/keycloak/realms\"",
+      "binding": {
+        "type": "zeebe:input",
+        "name": "url"
+      },
+      "condition": {
+        "property": "operation",
+        "equals": "keycloakRealmsPost"
+      }
+    },
+    {
+      "label": "Query Parameters",
+      "description": "FEEL map containing the query parameters",
+      "group": "modificationWarning",
+      "type": "String",
+      "feel": "required",
+      "value": "={\n}",
+      "binding": {
+        "type": "zeebe:input",
+        "name": "queryParameters"
+      },
+      "condition": {
+        "property": "operation",
+        "equals": "keycloakRealmsPost"
+      },
+      "optional": true
+    },
+    {
+      "label": "Request Body",
+      "description": "JSON payload to send with the request",
+      "group": "modificationWarning",
+      "type": "String",
+      "feel": "required",
+      "value": "= objects.keycloakRealmsPost_request",
+      "binding": {
+        "type": "zeebe:input",
+        "name": "body"
+      },
+      "condition": {
+        "property": "operation",
+        "equals": "keycloakRealmsPost"
+      },
+      "optional": true
+    }
+  ]
+}

@@ -1,0 +1,6 @@
+.openapi-generator-ignore
+element-templates/DefaultApi.json
+includes/KeyloakCreateRealmRequest-response.feel
+includes/KeyloakCreateRealmRequest.feel
+includes/KeyloakCreateRealmResponse-response.feel
+includes/KeyloakCreateRealmResponse.feel
